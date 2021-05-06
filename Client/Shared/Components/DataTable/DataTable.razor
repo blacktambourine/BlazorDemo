@@ -1,0 +1,9 @@
+<div class="data-table">
+    @ChildContent
+</div>
+
+@code
+{
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null;
+}
