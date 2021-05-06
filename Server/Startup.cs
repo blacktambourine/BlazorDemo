@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.IO.Compression;
 using System.Linq;
 
 namespace BlazorDemo.Server
@@ -22,13 +23,39 @@ namespace BlazorDemo.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("https://blacktambourine.github.io/");
+                    });
+            });
+
             services.AddSignalR();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddResponseCompression(opts =>
             {
+                opts.Providers.Add<BrotliCompressionProvider>();
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
-                    new[] { "application/octet-stream" });
+                    new[] { 
+                        "application/octet-stream", 
+                        "image/svg+xml", 
+                        "text/*", 
+                        "message/*",
+                        "application/x-javascript",
+                        "application/javascript",
+                        "application/json",
+                        "application/atom+xml",
+                        "application/xaml+xml",
+                        "application/font-woff"
+                    });
+            });
+
+            services.Configure<BrotliCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Optimal;
             });
         }
 
@@ -54,6 +81,7 @@ namespace BlazorDemo.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
