@@ -1,3 +1,5 @@
+@using BlazorDemo.Client.Shared.Components.Icons
+
 <div
     class="map-point"
     style="@CoordinatePositionStyle()"
@@ -6,7 +8,9 @@
         class="map-point__spot"
         title="@Label"
         @onclick="@PointAction"
-    ></button>
+    >
+        <MapMarker />
+    </button>
     <div class="map-point__label">@Label</div>
 </div>
 
@@ -25,7 +29,7 @@
 
     private string ConvertCoordinate(int Coordinate)
     {
-        return $"{Coordinate * 10}rem";
+        return $"{Coordinate * 10}%";
     }
 
     private string CoordinatePositionStyle()
