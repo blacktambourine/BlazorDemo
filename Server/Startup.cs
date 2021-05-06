@@ -59,7 +59,7 @@ namespace BlazorDemo.Server
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
-                endpoints.MapHub<ChatHub>("/chathub");
+                endpoints.MapHub<WeatherHub>("/weather");
                 endpoints.MapFallbackToFile("index.html");
             });
         }
