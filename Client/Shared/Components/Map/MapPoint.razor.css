@@ -1,0 +1,22 @@
+.map-point {
+    position: absolute;
+}
+
+.map-point__spot {
+    --spot-size: 1rem;
+
+    border-radius: 100%;
+    width: var(--spot-size);
+    height: var(--spot-size);
+    border: 2px solid rgb(163, 226, 255);
+    background-color: rgb(66, 154, 255);
+}
+
+.map-point__label {
+    position: absolute;
+    font-size: 8px;
+    white-space: nowrap;
+    top: 50%;
+    left: calc(100% + 0.5rem);
+    transform: translateY(-50%);
+}

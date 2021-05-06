@@ -1,0 +1,40 @@
+<div
+    class="map-point"
+    style="@CoordinatePositionStyle()"
+>
+    <button
+        class="map-point__spot"
+        title="@Label"
+        @onclick="@PointAction"
+    ></button>
+    <div class="map-point__label">@Label</div>
+</div>
+
+@code {
+    [Parameter]
+    public string Identifier { get; set; }
+
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter]
+    public List<int> Coordinates { get; set; }
+
+    [Parameter]
+    public EventCallback PointAction { get; set; }
+
+    private string ConvertCoordinate(int Coordinate)
+    {
+        return $"{Coordinate * 10}rem";
+    }
+
+    private string CoordinatePositionStyle()
+    {
+        var x = ConvertCoordinate(Coordinates.GetRange(0, 1).First());
+        var y = ConvertCoordinate(Coordinates.GetRange(1,1).First());
+        var posLeft = $"left: {x};";
+        var posTop = $"top: {y};";
+        
+        return $"{posLeft} {posTop}";
+    }
+}

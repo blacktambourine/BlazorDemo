@@ -1,0 +1,19 @@
+.map {
+    --map-width: 10rem;
+    --map-height: 10rem;
+
+    position: relative;
+    width: var(--map-width);
+    height: var(--map-height);
+}
+
+.map__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.map__points {
+    list-style: none;
+    padding: 0;
+}

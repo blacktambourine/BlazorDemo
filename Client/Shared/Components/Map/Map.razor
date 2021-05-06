@@ -1,0 +1,37 @@
+@using BlazorDemo.Client.Shared.Models
+@using BlazorDemo.Client.Shared.Components.Icons
+
+<div class="map">
+    <div class="map__zone">
+        @ChildContent
+    </div>
+    <div class="map__overlay">
+        <ul class="map__points">
+            @foreach (var MapPointItem in MapPoints)
+            {
+                <li>
+                    <MapPoint
+                        Identifier="MapPointItem.Identifier"
+                        Label="@MapPointItem.Label"
+                        Coordinates="@MapPointItem.Coordinates"
+                        PointAction="@PointHandler"
+                    />
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code
+{
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null;
+
+    [Parameter]
+    public List<MapPointModel> MapPoints { get; set; } = new();
+
+    private void PointHandler()
+    {
+        Console.WriteLine("Clicked point");
+    }
+}
