@@ -87,6 +87,7 @@ namespace BlazorDemo.Server
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
                 endpoints.MapHub<WeatherHub>("/weather");
