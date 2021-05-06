@@ -1,0 +1,4 @@
+.data-table {
+    display: flex;
+    flex-wrap: nowrap;
+}

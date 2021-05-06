@@ -1,0 +1,17 @@
+<li class="detail-list-item">
+    <span class="detail-list-item__icon">@ChildContent</span>
+    <span class="detail-list-item__label">@Label</span>
+    <span class="detail-list-item__value">@(string.IsNullOrEmpty(Data) ? "N/A" : Data)</span>
+</li>
+
+@code
+{
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null;
+
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Data { get; set; } = string.Empty;
+}

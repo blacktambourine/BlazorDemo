@@ -1,0 +1,39 @@
+@using BlazorDemo.Client.Shared.Models
+@using BlazorDemo.Client.Shared.Components.Icons
+
+<ul class="detail-list">
+    @foreach (var ListItem in ListContent)
+    {
+        <DetailListItem
+            Label="@ListItem.Label"
+            Data="@ListItem.Data"
+        >
+            @switch (@ListItem.IconType)
+            {
+                case "Clock":
+                case "Watch":
+                    { <Clock /> }
+                    break;
+                case "Compass":
+                case "Cirection":
+                    { <Compass /> }
+                    break;
+                case "Temperature":
+                case "Thermometer":
+                    { <Thermometer /> }
+                    break;
+                case "Water":
+                case "Wave":
+                default:
+                    { <Water /> }
+                    break;
+            }
+        </DetailListItem>
+    }
+</ul>
+
+@code
+{
+    [Parameter]
+    public List<DetailListItemModel> ListContent { get; set; } = new();
+}
