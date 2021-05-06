@@ -1,0 +1,84 @@
+@page "/components"
+@using BlazorDemo.Client.Shared.Components
+@using BlazorDemo.Client.Shared.Components.DetailList
+@using BlazorDemo.Client.Shared.Components.Icons
+@using BlazorDemo.Client.Shared.Components.Rows
+@using BlazorDemo.Client.Shared.Models
+
+<main>
+    <div class="table">
+        <Column title="Wind">
+            <RowTitle Title="13 kt" />
+            <RowTitleLabel
+                Title="40 kt"
+                Label="Current Gust"
+            />
+            <RowTitleLabel
+                Title="N"
+                Label="Wind Direction"
+            />
+        </Column>
+        <Column title="Tide">
+            <RowTitle Title="Dropping" />
+            <RowTideForecaset
+                Label="Next High Tide"
+                TideForecaset="1m at 10:51 WST"
+                RelativeTime="in 18 hours"
+            />
+            <RowTideForecaset
+                Label="Next Low Tide"
+                TideForecaset="0.99m at 12:30 WST"
+                RelativeTime="in 2 hours"
+            />
+        </Column>
+        <Column title="Wave">
+            <DetailList ListContent="@ExampleListContent" />
+        </Column>
+        <Column title="Weather">
+            <RowTitle Title="18.4°C" />
+            <RowTitleLabel
+                Title="80%"
+                Label="Humidity"
+            />
+            <RowTitleLabel
+                Title="1009 hPa"
+                Label="Air Pressure"
+            />
+        </Column>
+    </div>
+</main>
+
+@code {
+    public List<DetailListItemModel> ExampleListContent { get; } = new List<DetailListItemModel>() {
+        new DetailListItemModel() {
+            IconType = "Wave",
+            Label = "Swell Height",
+            Data = "0.09m"
+        },
+        new DetailListItemModel() {
+            IconType = "Wave",
+            Label = "Total Height",
+            Data = "0.16m"
+        },
+        new DetailListItemModel() {
+            IconType = "Clock",
+            Label = "Swell Period",
+            Data = "15sec"
+        },
+        new DetailListItemModel() {
+            IconType = "Clock",
+            Label = "Total Period",
+            Data = "4.5sec"
+        },
+        new DetailListItemModel() {
+            IconType = "Direction",
+            Label = "Wave Direction",
+            Data = "N/A"
+        },
+        new DetailListItemModel() {
+            IconType = "Temperature",
+            Label = "Water Temp",
+            Data = "N/A"
+        }
+    };
+}

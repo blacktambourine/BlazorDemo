@@ -1,0 +1,17 @@
+<div>
+    <p>@Label</p>
+    <p>@TideForecaset</p>
+    <p>@RelativeTime</p>
+</div>
+
+@code
+{
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter]
+    public string TideForecaset { get; set; } = string.Empty;
+
+    [Parameter]
+    public string RelativeTime { get; set; } = string.Empty;
+}

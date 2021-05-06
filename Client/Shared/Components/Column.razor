@@ -1,0 +1,13 @@
+<div class="column">
+    <h2 class="column__title">@Title</h2>
+    <div class="column__content">@ChildContent</div>
+</div>
+
+@code
+{
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null;
+
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+}
