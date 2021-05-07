@@ -1,6 +1,38 @@
 /* /Shared/Components/DataTable/Column.razor.rz.scp.css */
-.column[b-xubdsi128j] {
-    padding: 2rem 1rem;
+.column__title[b-xubdsi128j],
+.column__content[b-xubdsi128j] {
+    padding: 1rem 2rem;
+}
+
+.column__title[b-xubdsi128j] {
+    background-color: #000;
+    color: #fff;
+    border-bottom: 0.5rem solid lightgray;
+}
+
+.column:nth-child(1) .column__title[b-xubdsi128j] {
+    border-bottom-color: moccasin;
+}
+
+.column:nth-child(2) .column__title[b-xubdsi128j] {
+    border-bottom-color: thistle;
+}
+
+.column:nth-child(3) .column__title[b-xubdsi128j] {
+    border-bottom-color: lightblue;
+}
+
+.column:nth-child(4) .column__title[b-xubdsi128j] {
+    border-bottom-color: mistyrose;
+}
+
+.column[b-xubdsi128j]  .data-row {
+    min-height: 5rem;
+    margin-bottom: 2rem;
+}
+
+.column[b-xubdsi128j]  .data-row--title {
+    min-height: 0;
 }
 /* /Shared/Components/DataTable/DataTable.razor.rz.scp.css */
 .data-table[b-v76xsnglrq] {
@@ -9,6 +41,7 @@
 }
 /* /Shared/Components/DetailList/DetailList.razor.rz.scp.css */
 .detail-list[b-wbh3ignmnk] {
+    margin: 0.5rem 0;
     padding: 0;
     list-style: none;
 }
@@ -18,16 +51,39 @@
     max-height: 100%;
 }
 
-span[b-3xknls171e] {
-    display: inline-block;
-    width: 30%;
+.detail-list-item[b-3xknls171e] {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 2rem;
+}
+
+.detail-list-item__icon[b-3xknls171e],
+.detail-list-item__label[b-3xknls171e] {
+    margin-right: 1rem;
 }
 
 .detail-list-item__icon[b-3xknls171e] {
-    --icon-size: 2rem;
+    --icon-size: 1.5rem;
 
     width: var(--icon-size);
     height: var(--icon-size);
+}
+
+.detail-list-item__value[b-3xknls171e] {
+    flex-grow: 1;
+    text-align: right;
+}
+
+[b-3xknls171e] [data-icon="thermometer-three-quarters"] {
+    color: #9a5a9a;
+}
+
+[b-3xknls171e] [data-icon="water"] {
+    color: #5b8fa0
+}
+
+[b-3xknls171e] [data-icon="clock"] {
+    color: #bba276;
 }
 /* /Shared/Components/Map/Map.razor.rz.scp.css */
 .map[b-ddbwi9g0pp] {
@@ -101,6 +157,11 @@ span[b-3xknls171e] {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 0.2rem;
 }
+/* /Shared/Components/Rows/RowTideForecaset.razor.rz.scp.css */
+.data-row--tide-forecast p[b-h6aw8rx984] {
+    margin-bottom: 0.25rem;
+}
+/* /Shared/Components/Rows/RowTitle.razor.rz.scp.css */
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-hvbemzav5n] {
     position: relative;
