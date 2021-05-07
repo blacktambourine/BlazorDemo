@@ -5,12 +5,12 @@
 @using BlazorDemo.Client.Shared.Components.WeatherView
 
 <WeatherView
-    ExampleListContent="@ExampleListContent"
+    DataWave="@DataWave"
     MapPointsContent="@MapPointsContent"
 />
 
 @code {
-    public List<DetailListItemModel> ExampleListContent { get; } = new List<DetailListItemModel>() {
+    private List<DetailListItemModel> DataWave { get; } = new List<DetailListItemModel>() {
         new DetailListItemModel() {
             IconType = "Wave",
             Label = "Swell Height",
@@ -43,7 +43,7 @@
         }
     };
 
-    public List<MapPointModel> MapPointsContent { get; } = new List<MapPointModel>() {
+    private List<MapPointModel> MapPointsContent { get; } = new List<MapPointModel>() {
         new MapPointModel() {
             Identifier = Constants.MapLocations.DeepWaterChannel,
             Label = "Deep Water Channel",

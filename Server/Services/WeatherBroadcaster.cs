@@ -5,7 +5,7 @@ using System;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using BlazorDemo.Shared;
+using BlazorDemo.Shared.Models;
 
 namespace BlazorDemo.Server.Services
 {

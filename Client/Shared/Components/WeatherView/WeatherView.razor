@@ -32,7 +32,7 @@
             />
         </Column>
         <Column title="Wave">
-            <DetailList ListContent="@ExampleListContent" />
+            <DetailList ListContent="@DataWave" />
         </Column>
         <Column title="Weather">
             <RowTitle Title="18.4°C" />
@@ -53,7 +53,7 @@
 
 @code {
     [Parameter]
-    public List<DetailListItemModel> ExampleListContent { get; set; }
+    public List<DetailListItemModel> DataWave { get; set; }
 
     [Parameter]
     public List<MapPointModel> MapPointsContent { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
-using BlazorDemo.Shared;
+using BlazorDemo.Shared.Models;
 
 namespace BlazorDemo.Server.Hubs
 {
