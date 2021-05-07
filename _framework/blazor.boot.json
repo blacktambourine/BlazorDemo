@@ -32,7 +32,7 @@
       "System.IO.Pipelines.dll": "sha256-qZYTUS+ga7CydtH54fYPbehFCvx3B49I74G8dxreTog=",
       "System.Reactive.dll": "sha256-5NXtBB3pmsAQUKncARwRi7DZt8es8R813Nb1ix422lI=",
       "BlazorDemo.Shared.dll": "sha256-EiagPfyaPZhzEWywwjrM5n39UgnIas6B2Cicy18bsNE=",
-      "BlazorDemo.Client.dll": "sha256-5NKjM8TTJjAMmfvtQT5uG71YH5AOBezPmQZncr7GYqQ=",
+      "BlazorDemo.Client.dll": "sha256-3cMmNnOO\/OgH7FPKr6l70D7U5MiYQDDMFbL7vNdq\/Xw=",
       "Microsoft.Win32.Primitives.dll": "sha256-io9SatlZggoEFxJ89ZWSIv5+0C1Vdv9cwR7cjj7EEUk=",
       "System.Collections.Concurrent.dll": "sha256-qxHcH6RfyLKTLfdmBNH8ndurpzgoY3cfiFF7NFkEkGE=",
       "System.Collections.Immutable.dll": "sha256-CT48J5\/OLbMWnzrhnxBbeXuBH9eVOzQhqvDGltPhuHo=",
@@ -62,7 +62,7 @@
       "System.Text.Encodings.Web.dll": "sha256-oQLhqED2tXv8aMEq843v2H\/G8g+8uL2CgrbJb7NAlIs=",
       "System.Text.Json.dll": "sha256-i3lAdZNgy5+1UYoUdhaIkl1Ug5hb0QPNoWAzDZcgxaU=",
       "System.Threading.Channels.dll": "sha256-HHQWEVG6WvmKDFoCzWHMSycclWpUnsiO8U0dI6bXVD8=",
-      "System.Private.CoreLib.dll": "sha256-JDt2KRd9d5DHSoyQOwiTzvBgs+Rc8e7TbORwZV2pPkE="
+      "System.Private.CoreLib.dll": "sha256-YsJAWUezGMw\/bCWAHQP4zUaB0dUU1r5beZKSZdeP9sI="
     },
     "lazyAssembly": null,
     "pdb": null,

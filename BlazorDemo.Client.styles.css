@@ -29,6 +29,78 @@ span[b-3xknls171e] {
     width: var(--icon-size);
     height: var(--icon-size);
 }
+/* /Shared/Components/Map/Map.razor.rz.scp.css */
+.map[b-ddbwi9g0pp] {
+    --map-width: 20rem;
+    --map-height: 40rem;
+
+    position: relative;
+    width: var(--map-width);
+    height: var(--map-height);
+}
+
+.map__overlay[b-ddbwi9g0pp] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.map__overlay[b-ddbwi9g0pp]  svg {
+    max-width: 100%;
+}
+
+.map__points[b-ddbwi9g0pp] {
+    list-style: none;
+    padding: 0;
+}
+/* /Shared/Components/Map/MapPoint.razor.rz.scp.css */
+.map-point[b-zl3qeubuyk] {
+    position: absolute;
+}
+
+.map-point[b-zl3qeubuyk]  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.map-point__spot[b-zl3qeubuyk] {
+    --spot-size: 2rem;
+
+    border-radius: 100%;
+    width: var(--spot-size);
+    height: var(--spot-size);
+    background: transparent;
+    border: 0;
+}
+
+.map-point__spot:focus[b-zl3qeubuyk] {
+    outline: none;
+}
+
+.map-point__spot:hover[b-zl3qeubuyk]  svg {
+    color: rgb(163, 226, 255);
+}
+
+.map-point.active .map-point__spot[b-zl3qeubuyk]  svg {
+    color: #FFC500;
+}
+
+.map-point__label[b-zl3qeubuyk] {
+    position: absolute;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    padding: 0.2rem;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.2rem;
+}
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-hvbemzav5n] {
     position: relative;
