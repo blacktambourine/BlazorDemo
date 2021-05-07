@@ -8,12 +8,15 @@
         <ul class="map__points">
             @foreach (var MapPointItem in MapPoints)
             {
+                var isActive = MapPointItem.Identifier == CurrentPointIdentifier;
+
                 <li>
                     <MapPoint
-                        Identifier="MapPointItem.Identifier"
+                        Identifier="@MapPointItem.Identifier"
                         Label="@MapPointItem.Label"
                         Coordinates="@MapPointItem.Coordinates"
                         PointAction="@PointHandler"
+                        IsActive="@isActive"
                     />
                 </li>
             }
@@ -23,14 +26,16 @@
 
 @code
 {
+    private string CurrentPointIdentifier { get; set; } = string.Empty;
+
     [Parameter]
     public RenderFragment ChildContent { get; set; } = null;
 
     [Parameter]
     public List<MapPointModel> MapPoints { get; set; } = new();
 
-    private void PointHandler()
+    protected void PointHandler(string SelectionIdentifier)
     {
-        Console.WriteLine("Clicked point");
+        CurrentPointIdentifier = SelectionIdentifier;
     }
 }

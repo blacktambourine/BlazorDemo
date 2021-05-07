@@ -10,10 +10,6 @@
     color: #fff;
 }
 
-.map-point:hover ::deep svg {
-    color: rgb(163, 226, 255);
-}
-
 .map-point__spot {
     --spot-size: 2rem;
 
@@ -22,6 +18,18 @@
     height: var(--spot-size);
     background: transparent;
     border: 0;
+}
+
+.map-point__spot:focus {
+    outline: none;
+}
+
+.map-point__spot:hover ::deep svg {
+    color: rgb(163, 226, 255);
+}
+
+.map-point.active .map-point__spot ::deep svg {
+    color: #FFC500;
 }
 
 .map-point__label {

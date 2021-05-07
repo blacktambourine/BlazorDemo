@@ -1,13 +1,17 @@
 @using BlazorDemo.Client.Shared.Components.Icons
 
+@{
+    var activeClass = IsActive ? "active" : "inactive";
+}
+
 <div
-    class="map-point"
+    class="map-point @activeClass"
     style="@CoordinatePositionStyle()"
 >
     <button
         class="map-point__spot"
         title="@Label"
-        @onclick="@PointAction"
+        @onclick="PointSelect"
     >
         <MapMarker />
     </button>
@@ -25,14 +29,22 @@
     public List<double> Coordinates { get; set; }
 
     [Parameter]
-    public EventCallback PointAction { get; set; }
+    public EventCallback<string> PointAction { get; set; }
 
-    private string ConvertCoordinate(double Coordinate)
+    [Parameter]
+    public bool IsActive { get; set; }
+
+    private void PointSelect ()
+    {
+        PointAction.InvokeAsync(Identifier);
+    }
+
+    private string ConvertCoordinate (double Coordinate)
     {
         return $"{Coordinate * 10}%";
     }
 
-    private string CoordinatePositionStyle()
+    private string CoordinatePositionStyle ()
     {
         var x = ConvertCoordinate(Coordinates.GetRange(0, 1).First());
         var y = ConvertCoordinate(Coordinates.GetRange(1,1).First());
