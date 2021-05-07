@@ -8,7 +8,7 @@ namespace BlazorDemo.Client.Shared.Models
         
         public string Label { get; set; }
 
-        public List<int> Coordinates { get; set; }
+        public List<double> Coordinates { get; set; }
 
     }
 }

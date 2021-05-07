@@ -22,12 +22,12 @@
     public string Label { get; set; } = string.Empty;
 
     [Parameter]
-    public List<int> Coordinates { get; set; }
+    public List<double> Coordinates { get; set; }
 
     [Parameter]
     public EventCallback PointAction { get; set; }
 
-    private string ConvertCoordinate(int Coordinate)
+    private string ConvertCoordinate(double Coordinate)
     {
         return $"{Coordinate * 10}%";
     }
