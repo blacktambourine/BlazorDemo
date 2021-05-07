@@ -5,7 +5,7 @@
 
 .detail-list-item {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 2rem;
 }
 
