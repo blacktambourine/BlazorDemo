@@ -1,3 +1,30 @@
-.column {
-    padding: 2rem 1rem;
+.column__title,
+.column__content {
+    padding: 1rem 2rem;
+}
+
+.column__title {
+    background-color: #000;
+    color: #fff;
+    border-bottom: 0.5rem solid lightgray;
+}
+
+.column:nth-child(1) .column__title {
+    border-bottom-color: moccasin;
+}
+
+.column:nth-child(2) .column__title {
+    border-bottom-color: thistle;
+}
+
+.column:nth-child(3) .column__title {
+    border-bottom-color: lightblue;
+}
+
+.column:nth-child(4) .column__title {
+    border-bottom-color: mistyrose;
+}
+
+.column ::deep .data-row {
+    margin-bottom: 2rem;
 }

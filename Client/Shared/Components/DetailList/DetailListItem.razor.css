@@ -3,14 +3,36 @@
     max-height: 100%;
 }
 
-span {
-    display: inline-block;
-    width: 30%;
+.detail-list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.detail-list-item__icon,
+.detail-list-item__label {
+    margin-right: 1rem;
 }
 
 .detail-list-item__icon {
-    --icon-size: 2rem;
+    --icon-size: 1.5rem;
 
     width: var(--icon-size);
     height: var(--icon-size);
+}
+
+.detail-list-item__value {
+    text-align: right;
+}
+
+::deep [data-icon="thermometer-three-quarters"] {
+    color: #9a5a9a;
+}
+
+::deep [data-icon="water"] {
+    color: #5b8fa0
+}
+
+::deep [data-icon="clock"] {
+    color: #bba276;
 }
