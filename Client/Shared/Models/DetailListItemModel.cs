@@ -1,10 +1,8 @@
+using BlazorDemo.Shared.Models;
+
 namespace BlazorDemo.Client.Shared.Models
 {
-    public class DetailListItemModel
+    public class DetailListItemModel: DetailItem
     {
-        public string IconType { get; set; }
-        public string Label { get; set; }
-        
-        public string Data { get; set; }
     }
 }

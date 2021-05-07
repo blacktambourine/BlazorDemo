@@ -5,7 +5,7 @@ using System;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using BlazorDemo.Shared;
+using BlazorDemo.Server.Helpers;
 
 namespace BlazorDemo.Server.Services
 {
@@ -29,12 +29,7 @@ namespace BlazorDemo.Server.Services
             var random = new Random();  
             _subscription = Observable.Interval(TimeSpan.FromSeconds(1))
                 .Subscribe(_ => 
-                    _hubContext.Clients.All.SendAsync("WeatherUpdate", new WeatherForecast
-                    {
-                        Date = DateTime.Now,
-                        TemperatureC = random.Next(20, 50),
-                        Summary = "Update"
-                    }, cancellationToken));
+                    _hubContext.Clients.All.SendAsync("WeatherUpdate", MockWeatherGenerator.GenerateWeather(), cancellationToken));
             return Task.CompletedTask;
         }
 

@@ -1,5 +1,4 @@
-@page "/components"
-
+@page "/weather"
 @using BlazorDemo.Client.Shared.Models
 @using BlazorDemo.Client.Shared.Constants
 @using BlazorDemo.Client.Shared.Components.WeatherView
@@ -10,7 +9,7 @@
 />
 
 @code {
-    private List<DetailListItemModel> DataWave { get; } = new List<DetailListItemModel>() {
+    public List<DetailListItemModel> DataWave { get; } = new List<DetailListItemModel>() {
         new DetailListItemModel() {
             IconType = "Wave",
             Label = "Swell Height",
@@ -43,7 +42,7 @@
         }
     };
 
-    private List<MapPointModel> MapPointsContent { get; } = new List<MapPointModel>() {
+    public List<MapPointModel> MapPointsContent { get; } = new List<MapPointModel>() {
         new MapPointModel() {
             Identifier = Constants.MapLocations.DeepWaterChannel,
             Label = "Deep Water Channel",

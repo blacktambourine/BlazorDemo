@@ -1,0 +1,8 @@
+.weather-view {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weather-view ::deep .data-table {
+    margin-right: 4rem;
+}
