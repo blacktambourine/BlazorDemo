@@ -1,0 +1,45 @@
+.map-point {
+    position: absolute;
+}
+
+.map-point ::deep svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.map-point__spot {
+    --spot-size: 2rem;
+
+    border-radius: 100%;
+    width: var(--spot-size);
+    height: var(--spot-size);
+    background: transparent;
+    border: 0;
+}
+
+.map-point__spot:focus {
+    outline: none;
+}
+
+.map-point__spot:hover ::deep svg {
+    color: rgb(163, 226, 255);
+}
+
+.map-point.active .map-point__spot ::deep svg {
+    color: #FFC500;
+}
+
+.map-point__label {
+    position: absolute;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    padding: 0.2rem;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.2rem;
+}

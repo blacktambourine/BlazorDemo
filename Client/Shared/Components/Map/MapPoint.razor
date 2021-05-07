@@ -1,0 +1,56 @@
+@using BlazorDemo.Client.Shared.Components.Icons
+
+@{
+    var activeClass = IsActive ? "active" : "inactive";
+}
+
+<div
+    class="map-point @activeClass"
+    style="@CoordinatePositionStyle()"
+>
+    <button
+        class="map-point__spot"
+        title="@Label"
+        @onclick="PointSelect"
+    >
+        <MapMarker />
+    </button>
+    <div class="map-point__label">@Label</div>
+</div>
+
+@code {
+    [Parameter]
+    public string Identifier { get; set; }
+
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter]
+    public List<double> Coordinates { get; set; }
+
+    [Parameter]
+    public EventCallback<string> PointAction { get; set; }
+
+    [Parameter]
+    public bool IsActive { get; set; }
+
+    private void PointSelect ()
+    {
+        PointAction.InvokeAsync(Identifier);
+    }
+
+    private string ConvertCoordinate (double Coordinate)
+    {
+        return $"{Coordinate * 10}%";
+    }
+
+    private string CoordinatePositionStyle ()
+    {
+        var x = ConvertCoordinate(Coordinates.GetRange(0, 1).First());
+        var y = ConvertCoordinate(Coordinates.GetRange(1,1).First());
+        var posLeft = $"left: {x};";
+        var posTop = $"top: {y};";
+        
+        return $"{posLeft} {posTop}";
+    }
+}

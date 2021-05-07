@@ -2,51 +2,60 @@
 @using BlazorDemo.Client.Shared.Components
 @using BlazorDemo.Client.Shared.Components.DataTable
 @using BlazorDemo.Client.Shared.Components.DetailList
-@using BlazorDemo.Client.Shared.Components.Icons
+@using BlazorDemo.Client.Shared.Components.Graphics
+@using BlazorDemo.Client.Shared.Components.Map
 @using BlazorDemo.Client.Shared.Components.Rows
 @using BlazorDemo.Client.Shared.Models
+@using BlazorDemo.Client.Shared.Constants
 
 <main>
-    <DataTable>
-        <Column title="Wind">
-            <RowTitle Title="13 kt" />
-            <RowTitleLabel
-                Title="40 kt"
-                Label="Current Gust"
-            />
-            <RowTitleLabel
-                Title="N"
-                Label="Wind Direction"
-            />
-        </Column>
-        <Column title="Tide">
-            <RowTitle Title="Dropping" />
-            <RowTideForecaset
-                Label="Next High Tide"
-                TideForecaset="1m at 10:51 WST"
-                RelativeTime="in 18 hours"
-            />
-            <RowTideForecaset
-                Label="Next Low Tide"
-                TideForecaset="0.99m at 12:30 WST"
-                RelativeTime="in 2 hours"
-            />
-        </Column>
-        <Column title="Wave">
-            <DetailList ListContent="@ExampleListContent" />
-        </Column>
-        <Column title="Weather">
-            <RowTitle Title="18.4°C" />
-            <RowTitleLabel
-                Title="80%"
-                Label="Humidity"
-            />
-            <RowTitleLabel
-                Title="1009 hPa"
-                Label="Air Pressure"
-            />
-        </Column>
-    </DataTable>
+    <section>
+        <DataTable>
+            <Column title="Wind">
+                <RowTitle Title="13 kt" />
+                <RowTitleLabel
+                    Title="40 kt"
+                    Label="Current Gust"
+                />
+                <RowTitleLabel
+                    Title="N"
+                    Label="Wind Direction"
+                />
+            </Column>
+            <Column title="Tide">
+                <RowTitle Title="Dropping" />
+                <RowTideForecaset
+                    Label="Next High Tide"
+                    TideForecaset="1m at 10:51 WST"
+                    RelativeTime="in 18 hours"
+                />
+                <RowTideForecaset
+                    Label="Next Low Tide"
+                    TideForecaset="0.99m at 12:30 WST"
+                    RelativeTime="in 2 hours"
+                />
+            </Column>
+            <Column title="Wave">
+                <DetailList ListContent="@ExampleListContent" />
+            </Column>
+            <Column title="Weather">
+                <RowTitle Title="18.4°C" />
+                <RowTitleLabel
+                    Title="80%"
+                    Label="Humidity"
+                />
+                <RowTitleLabel
+                    Title="1009 hPa"
+                    Label="Air Pressure"
+                />
+            </Column>
+        </DataTable>
+    </section>
+    <section>
+        <Map MapPoints="@MapPointsContent">
+            <MapOfFremantle />
+        </Map>
+    </section>
 </main>
 
 @code {
@@ -80,6 +89,29 @@
             IconType = "Temperature",
             Label = "Water Temp",
             Data = "N/A"
+        }
+    };
+
+    public List<MapPointModel> MapPointsContent { get; } = new List<MapPointModel>() {
+        new MapPointModel() {
+            Identifier = Constants.MapLocations.DeepWaterChannel,
+            Label = "Deep Water Channel",
+            Coordinates = new List<double>(){5, 2}
+        },
+        new MapPointModel() {
+            Identifier = Constants.MapLocations.ParmeliaChannel,
+            Label = "Parmelia Channel",
+            Coordinates = new List<double>(){6, 5}
+        },
+        new MapPointModel() {
+            Identifier = Constants.MapLocations.InnerHarbour,
+            Label = "Inner Harbour",
+            Coordinates = new List<double>(){6.5, 3.5}
+        },
+        new MapPointModel() {
+            Identifier = Constants.MapLocations.OuterHarbour,
+            Label = "Outer Harbour",
+            Coordinates = new List<double>{7, 6}
         }
     };
 }

@@ -1,0 +1,41 @@
+@using BlazorDemo.Client.Shared.Models
+
+<div class="map">
+    <div class="map__zone">
+        @ChildContent
+    </div>
+    <div class="map__overlay">
+        <ul class="map__points">
+            @foreach (var MapPointItem in MapPoints)
+            {
+                var isActive = MapPointItem.Identifier == CurrentPointIdentifier;
+
+                <li>
+                    <MapPoint
+                        Identifier="@MapPointItem.Identifier"
+                        Label="@MapPointItem.Label"
+                        Coordinates="@MapPointItem.Coordinates"
+                        PointAction="@PointHandler"
+                        IsActive="@isActive"
+                    />
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code
+{
+    private string CurrentPointIdentifier { get; set; } = string.Empty;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null;
+
+    [Parameter]
+    public List<MapPointModel> MapPoints { get; set; } = new();
+
+    protected void PointHandler(string SelectionIdentifier)
+    {
+        CurrentPointIdentifier = SelectionIdentifier;
+    }
+}
