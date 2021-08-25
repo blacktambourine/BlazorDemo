@@ -1,68 +1,51 @@
 ﻿@page "/"
-@using Microsoft.AspNetCore.SignalR.Client
-@using BlazorDemo.Shared
-@inject NavigationManager NavigationManager
-@implements IAsyncDisposable
 
-    <h1>Hello, world! Test weather</h1>
+@using Fluxor
+@using BlazorDemo.Client.Shared.Store.WeatherHub
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@inject IState<WeatherHubState> _weatherHubState
+@inject IDispatcher _dispatcher
+
+<h1>Hello, world! Test weather</h1>
 
     Welcome to your new app.
 
-    <SurveyPrompt Title="How is Blazor working for you?" />
+<SurveyPrompt Title="How is Blazor working for you?" />
 
-    <hr>
+<hr>
 
-    @if (weather == null)
-    {
-        <p><em>Loading...</em></p>
-    }
-    else
-    {
-        <table class="table">
-            <thead>
+@if (_weatherHubState.Value.IsLoading)
+{
+    <p><em>Loading...</em></p>
+}
+else if (!string.IsNullOrEmpty(_weatherHubState.Value.Error))
+{
+    <p><strong>Error: @_weatherHubState.Value.Error</strong></p>
+}
+else if (_weatherHubState.Value.Forecast != null)
+{
+    <table class="table">
+        <thead>
             <tr>
                 <th>Date</th>
                 <th>Temp. (C)</th>
                 <th>Temp. (F)</th>
-                <th>Summary</th>
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             <tr>
-                <td>@weather.Date.ToShortDateString()</td>
-                <td>@weather.TemperatureC</td>
-                <td>@weather.TemperatureF</td>
-                <td>@weather.Summary</td>
+                <td>@_weatherHubState.Value.Forecast?.Date.ToShortDateString()</td>
+                <td>@_weatherHubState.Value.Forecast?.TemperatureC</td>
+                <td>@_weatherHubState.Value.Forecast?.TemperatureF</td>
             </tr>
-            </tbody>
-        </table>
+        </tbody>
+    </table>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        _dispatcher.Dispatch(new WeatherHubStartAction());
+        base.OnInitialized();
     }
-
-    @code {
-        private HubConnection hubConnection;
-        private WeatherForecast weather = new WeatherForecast {Date = DateTime.Now, TemperatureC = 25, Summary = "Initial"};
-        private string userInput;
-        private string messageInput;
-
-        protected override async Task OnInitializedAsync()
-        {
-            hubConnection = new HubConnectionBuilder()
-                .WithUrl(NavigationManager.ToAbsoluteUri("/weather"))
-                .Build();
-
-            hubConnection.On<WeatherForecast>("WeatherUpdate", model =>
-            {
-                weather = model;
-                StateHasChanged();
-            });
-
-            await hubConnection.StartAsync();
-        }
-
-        public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
-
-        public async ValueTask DisposeAsync()
-        {
-            await hubConnection.DisposeAsync();
-        }
-    }
+}
