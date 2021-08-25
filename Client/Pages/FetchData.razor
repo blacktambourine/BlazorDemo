@@ -1,14 +1,23 @@
 ﻿@page "/fetchdata"
 @using BlazorDemo.Shared
-@inject HttpClient Http
+
+@using Fluxor
+@using BlazorDemo.Client.Shared.Store.FetchData
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+@inject IState<FetchDataState> _fetchDataState
+@inject IDispatcher _dispatcher
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (forecasts == null)
+@if (_fetchDataState.Value.IsLoading)
 {
     <p><em>Loading...</em></p>
+}
+else if (!string.IsNullOrEmpty(_fetchDataState.Value.Error))
+{
+    <p><strong>Error: @_fetchDataState.Value.Error</strong></p>
 }
 else
 {
@@ -22,7 +31,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var forecast in _fetchDataState.Value.Forecasts)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -36,11 +45,10 @@ else
 }
 
 @code {
-    private WeatherForecast[] forecasts;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        _dispatcher.Dispatch(new FetchDataAction());
+        base.OnInitialized();
     }
-
 }

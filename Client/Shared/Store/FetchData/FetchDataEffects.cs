@@ -4,15 +4,15 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using BlazorDemo.Client.Shared.State.Action;
+using BlazorDemo.Client.Shared.Store.FetchData;
 
 namespace BlazorDemo.Client.Shared.Store.Counter
 {
-    public class CounterEffects
+    public class FetchDataEffects
     {
         private readonly HttpClient _httpClient;
 
-        public CounterEffects(HttpClient httpClient)
+        public FetchDataEffects(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
@@ -31,7 +31,7 @@ namespace BlazorDemo.Client.Shared.Store.Counter
         {
             try
             {
-                var forecasts = await _httpClient.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+                var forecasts = await _httpClient.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
                 dispatcher.Dispatch(new FetchDataSuccessAction(forecasts));
             }
             catch (Exception ex)
